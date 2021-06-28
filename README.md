@@ -1,4 +1,4 @@
-# Reinforcement Learning
+# Deep Q Learning
 
 To implement Naive Deep Q Learning one basic example.
 
@@ -15,4 +15,13 @@ or you can use docker:
 ```bash
 $ docker build -t rl-example .
 $ docker run rl-example
+```
+
+If you want to change game in gym library, you should change "game_name":
+
+```python
+from training import TrainGame
+
+game = TrainGame(game_name='CartPole-v1', n_games=10_000)
+game.training()
 ```
