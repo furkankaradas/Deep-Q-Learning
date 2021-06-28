@@ -17,11 +17,11 @@ $ docker build -t rl-example .
 $ docker run rl-example
 ```
 
-If you want to change game in gym library, you should change "game_name":
+If you want to change game in gym library, you should change "game_name" and also you can change layers for deep Q learning (using layer_dims):
 
 ```python
 from training import TrainGame
 
-game = TrainGame(game_name='CartPole-v1', n_games=10_000)
+game = TrainGame(game_name='CartPole-v1', n_games=10_000, layer_dims=[128, 128])
 game.training()
 ```
