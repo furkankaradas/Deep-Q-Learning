@@ -5,7 +5,8 @@ from model import LinearDeepQModel
 
 
 class Agent:
-    def __init__(self, input_dims, n_actions, learning_rate=0.001, gamma=0.99, epsilon=1.0, eps_dec=1e-5, eps_min=0.01):
+    def __init__(self, input_dims, n_actions, layer_dims, learning_rate=0.001, gamma=0.99, epsilon=1.0, eps_dec=1e-5,
+                 eps_min=0.01):
         # Pass parameters
         self.learning_rate = learning_rate
         self.input_dims = input_dims
@@ -14,9 +15,10 @@ class Agent:
         self.epsilon = epsilon
         self.eps_dec = eps_dec
         self.eps_min = eps_min
+        self.layer_dims = layer_dims
         # Create action space and Q
         self.action_space = [i for i in range(self.n_actions)]
-        self.Q = LinearDeepQModel(input_dims=self.input_dims, n_actions=self.n_actions, layer_dims=[128, 128],
+        self.Q = LinearDeepQModel(input_dims=self.input_dims, n_actions=self.n_actions, layer_dims=self.layer_dims,
                                   learning_rate=self.learning_rate)
 
     # Create function for to choose action

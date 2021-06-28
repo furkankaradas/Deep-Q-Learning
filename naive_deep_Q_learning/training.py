@@ -17,14 +17,15 @@ logger = logging.getLogger()
 
 
 class TrainGame:
-    def __init__(self, game_name, n_games):
+    def __init__(self, game_name, n_games, layer_dims=[128, 128]):
         self.game_name = game_name
         self.n_games = n_games
         self.environment = gym.make(self.game_name)
         self.scores = []
         self.eps_history = []
+        self.layer_dims = layer_dims
         self.agent = Agent(input_dims=self.environment.observation_space.shape,
-                           n_actions=self.environment.action_space.n)
+                           n_actions=self.environment.action_space.n, layer_dims=self.layer_dims)
 
     def training(self):
         for i in range(self.n_games):
